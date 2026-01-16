@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  backend:
+    image: serbrigue/portafolio-backend:v1.0
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    restart: always
+
+  frontend:
+    image: serbrigue/portafolio-frontend:v1.0
+    ports:
+      - "80:80"
+    env_file:
+      - .env
+    depends_on:
+      - backend
+    restart: always

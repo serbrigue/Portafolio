@@ -12,3 +12,9 @@ node_modules
 npm-debug.log
 Dockerfile
 docker-compose.yml
+
+# Terraform
+terraform/
+*.tf
+*.tfvars
+*.tfstate
