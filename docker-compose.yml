@@ -7,18 +7,18 @@ services:
       - "5000:5000"
     volumes:
       - ./backend/app:/app/app
-    environment:
-      - FLASK_ENV=development
+    env_file:
+      - ./backend/.env
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - "5173:5173"
-    volumes:
-      - ./frontend/src:/app/src
-    environment:
-      - CHOKIDAR_USEPOLLING=true
+      - "5173:80" # Mapping host 5173 to container 80 to maintain user URL habits
+    # volumes:  <- Removed in Production to use optimized built assets
+    #   - ./frontend/src:/app/src
+    env_file:
+      - ./frontend/.env
     depends_on:
       - backend

@@ -12,7 +12,9 @@ const useFetchData = (endpoint) => {
                 // In Docker, localhost:5000 might need adjustment if accessed server-side, 
                 // but for client-side React, localhost:5000 works if ports are mapped.
                 // Ideally use an environment variable.
-                const baseUrl = 'http://localhost:5000';
+                // In production (Nginx), we use relative path (empty base) because endpoint already has /api
+                // In dev, we might use absolute.
+                const baseUrl = import.meta.env.VITE_API_URL || '';
                 const response = await axios.get(`${baseUrl}${endpoint}`);
                 setData(response.data);
             } catch (err) {

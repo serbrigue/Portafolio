@@ -1,6 +1,14 @@
-node_modules
-dist
-.git
 __pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
 venv
 .env
+.git
+.gitignore
+node_modules
+npm-debug.log
+Dockerfile
+docker-compose.yml
